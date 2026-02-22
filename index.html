@@ -17,6 +17,9 @@
             </div>
             
         </div>
+        <div class="hamburger">
+            <img src="menu-svgrepo-com.svg">
+        </div>
         <div class="navbox">
             <p>Spielplan</p>
             <p>Geschichte</p>
@@ -26,6 +29,14 @@
                 <p>schali_graupa</p>
             </div>
         </div>
+    </div>
+    <div class="isle">
+        
+        <a href="#spielplan">
+        <img src="calender-svgrepo-com.svg">
+    </a>
+    <a href="#rückblick"><img src="gallery-svgrepo-com.svg"></a>
+        
     </div>
     <div class="header-spacer"></div>
     
@@ -52,14 +63,14 @@
                 <p class="button">mehr Informationen</p>
         </div>
     </div>
-    <div class="wrapdivider">
+    <div class="wrapdivider" id="spielplan">
         <h1>Spielplan</h1>
         <div class="divideline"></div>
         
     
     </div>
     <div class="spielplangeschichte">
-        <div class="sspielplan">
+        <div class="sspielplan" >
         <div class="sspielplanelement">
             <div class="sspielplandate">
                 <h2>08</h2>
@@ -147,10 +158,17 @@
         </div>
     </div>
 
-        
+        <div class="historie">
+            <img class="papertexture" src="paper.avif">
+            <div class="historiecontent">
+                <h2>Geschichte</h2>
+                <img class="bildalt" src="geschichte_13.jpg" style="transform: rotate(2deg);">
+                <img class="bildalt" src="geschichte_14.jpg">
+            </div>
+        </div>
     </div>
     
-    <div class="wrapperdiv">
+    <div class="wrapperdiv" id="rückblick">
         <div class="wrapdivider">
         <h1>Rückblick</h1>
         <div class="divideline"></div>
@@ -236,6 +254,17 @@
 </body>
 </html>
 <style>
+    html{
+        scroll-behavior: smooth;
+    }
+    :target {
+    scroll-margin-top: 120px; /* Höhe des Headers + ein kleiner Puffer */
+}
+
+/* Oder global für alle Elemente mit ID: */
+[id] {
+    scroll-margin-top: 120px;
+}
     :root {
             --accent-color: #d4af37; /* Gold-Ton für Tradition */
             --dark-gray: #505050;
@@ -246,6 +275,65 @@
         color: var(--text-main);
         font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
         
+    }
+    .hamburger{
+        height:100%;
+        overflow: hidden;
+        display: none;
+    }
+    .hamburger img{
+        height: 40%;
+        margin:20px;
+    }
+  .isle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 25px;
+    padding: 12px 20px;
+    z-index: 30;
+
+    background: rgba(255, 255, 255, 0.269); 
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 20px; 
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Etwas hellere Kante für den Glas-Look */
+
+    /* --- Kombinierte Schatten --- */
+    box-shadow: 
+        /* Schatten nach außen */
+        0 10px 40px rgba(0, 0, 0, 0.146), 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        /* Weißer Schatten nach innen (Lichtkante oben/links) */
+        inset 0 1px 4px rgba(255, 255, 255, 0.683),
+        /* Optional: Ein sehr weicher innerer Glow */
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+.isle a {
+    text-decoration: none;
+    display: flex; /* Hält das Icon mittig */
+    align-items: center;
+}
+    .isle img{
+        width:30px; 
+        filter: brightness(0);
+        transition: 0.2s;
+        padding: 5px;
+        opacity: 0.7;
+    
+
+    }
+    .isle img:hover{
+        opacity: 1;
+        transition: 0.2s;
+        
+        filter: brightness(0)  drop-shadow(0 1px 10px rgba(0, 0, 0, 0.21)) 
+            drop-shadow(0 4px 12px rgba(0, 0, 0, 0.626));
+        
+
+    
+
     }
     .sspielplan{
         display: flex;
@@ -346,8 +434,16 @@
     
     /* Deine bestehenden Styles */
     height: 100px;
-    background-color: white; /* Wichtig, damit man den Inhalt beim Scrollen nicht durchsieht */
-    border-bottom: solid 1px #e3e3e3;
+    background: rgba(255, 255, 255, 0.727); 
+    backdrop-filter: blur(12px) saturate(100%);
+    -webkit-backdrop-filter: blur(12px) saturate(100%);
+    
+    border: 1px solid rgba(201, 201, 201, 0.1);
+
+    /* --- Optimierter Schatten --- */
+    /* Erhöhter Blur (40px) und stärkere Deckkraft (0.3) */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.146), 
+                0 4px 12px rgba(0, 0, 0, 0.1); 
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -372,11 +468,11 @@
         display: flex;
         flex-direction: row ;
         align-items: center;
-        margin:18px
+        margin:18px;
     }
     .logobox img {
         height: 80%;
-        margin-right:18px
+        margin-right:18px;
     }
     .logotext h1{
         
@@ -427,7 +523,7 @@
         display: flex;
         
         width: fit-content;
-        flex-wrap: no-wrap;
+        flex-wrap:nowrap;
         margin-right: 15px;
         margin-bottom: 10px;
     }
@@ -439,7 +535,7 @@
         display: flex;
         flex-direction: row;
         width: fit-content;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         
     }
     .repertoirelister{
@@ -666,9 +762,12 @@
   
     .upcomingImg{
         height: 100%;
+        aspect-ratio: 4/3;
         width: auto;
+       
+  
     }
-    .upcomingTitle{
+      .upcomingTitle{
         margin: 15px;
         margin-bottom: 0px;
         font-size: 18pt;
@@ -847,7 +946,8 @@
             .upcomingElement { flex-direction: column; height: auto; max-width:80vw; }
             .upcomingImg { width: 100%; max-width: 500px;}
             .navbox { display: none; } /* Mobile Menu müsste ergänzt werden */
-            .logotext h1{font-size: 14pt; }
+            .hamburger{display:block}
+            .logotext h1{font-size: 11pt; }
             .logotext p{font-size: 10pt; }
             .headercontainer{height:70px}
             .header-spacer {height: 70px; }
@@ -881,7 +981,7 @@
     }
     @media (max-width: 450px) {
             .slocationdate{
-                flex-direction: column;
+               
                 gap: 5px;
             }
             
@@ -890,6 +990,50 @@
             }
     }
     
-
 </style>
+<script>
+  const imgElement = document.querySelector('.upcomingImg');
+  const titleElement = document.querySelector('.upcomingTitle');
+  const textElement = document.querySelector('.upcomingText');
+  const dateElement = document.querySelector('.date');
+  // Wir greifen hier direkt das Link-Tag in der Location
+  const locationLink = document.querySelector('.location a');
+  // Und den Container der Location, um ihn ggf. auszublenden
+  const locationContainer = document.querySelector('.location');
 
+  const bilder = [
+    'SachsenEnergie-Eiskanal-Altenberg_01_Foto-FIL-Mareks-Galinovskis.jpg',
+    'frank.jpg',
+    'geschichte_14.jpg'
+  ];
+
+  const titel = ['Rodel-Weltcup', 'Mitmachen', 'Blick in die Historie'];
+  const text = [
+    'Wir begleiten das große Weltcup-Finale am 08.03. in Altenberg musikalisch direkt an der Bahn.',
+    'Komme einfach zur Probe.',
+    'Unser historischer Rückblick'
+  ];
+  const daten = ['📅 So, 08.03.2026', '📅 Mittwochs', 'Est. 1964'];
+  const ortsnamen = ['📌 Eiskanal Altenberg', '📌 Grundschule Graupa', ''];
+
+  let i = 0;
+
+  setInterval(() => {
+    i = (i + 1) % bilder.length; 
+
+    imgElement.src = bilder[i];
+    titleElement.innerText = titel[i];
+    textElement.innerText = text[i];
+
+    // Datum aktualisieren & verstecken falls leer
+    dateElement.innerText = daten[i];
+    dateElement.style.display = daten[i] === '' ? 'none' : 'inline-block';
+
+    // Location-Text im Link aktualisieren & verstecken falls leer
+    if (locationLink) {
+        locationLink.innerText = ortsnamen[i];
+    }
+    locationContainer.style.display = ortsnamen[i] === '' ? 'none' : 'inline-block';
+    
+  }, 5000); 
+</script>
